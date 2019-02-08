@@ -24,5 +24,9 @@
   "homepage": "https://github.com/rhiroyuki/quotes-api#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "nodemon": "^1.18.9"
   }
 }
