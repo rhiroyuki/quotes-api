@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const config = require('./config/config');
 const dbConnection = require('./config/database');
 const morgan = require('morgan');
@@ -7,6 +8,7 @@ const morgan = require('morgan');
 const routes = require('./config/routes');
 
 app.use(morgan(':date - :method :url :status :response-time ms - :res[content-length]'));
+app.use(express.json());
 
 app.use('/', routes);
 
