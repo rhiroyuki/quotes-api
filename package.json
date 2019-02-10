@@ -1,0 +1,38 @@
+{
+  "name": "quotes-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "engines": {
+    "node": "10.15.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhiroyuki/quotes-api.git"
+  },
+  "keywords": [
+    "api",
+    "nodejs"
+  ],
+  "author": "Ricardo Eihara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhiroyuki/quotes-api/issues"
+  },
+  "homepage": "https://github.com/rhiroyuki/quotes-api#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.10",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "nodemon": "^1.18.9"
+  }
+}
