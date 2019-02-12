@@ -1,8 +1,10 @@
-if(process.env.NODE_ENV === undefined) {
+if (process.env.NODE_ENV === undefined) {
   process.env.NODE_ENV = 'development';
-};
+}
 
+/* eslint-disable */
 (process.env.NODE_ENV === 'production') || require('dotenv').config();
+/* eslint-enable */
 
 const env = process.env.NODE_ENV;
 
@@ -18,4 +20,3 @@ const baseConfig = {
 const envConfig = require(`./environment/${env}`);
 
 module.exports = Object.assign(baseConfig, envConfig);
-

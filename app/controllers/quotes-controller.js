@@ -1,24 +1,24 @@
 const Quote = require('../models/quote');
 
 const QuotesController = {
-  create: (req, res, next) => {
-    let quote = new Quote(req.body);
+  create: (req, res) => {
+    const quote = new Quote(req.body);
 
-    if(req.body.message !== ''){
-      quote.save((err)=>{
-        if(err){
+    if (req.body.message) {
+      quote.save((err) => {
+        if (err) {
           console.log(err);
         } else {
-          console.log("Successfully created a quote");
+          console.log('Successfully created a quote');
           res.status(201).send({ quote }).end();
         }
-      })
+      });
     } else {
-      console.log("Message can not be empty!");
+      console.log('Message can not be empty!');
     }
   },
 
-  show: (req, res, next) => {
+  show: (req, res) => {
     Quote.findOne({ _id: req.params.id }, (err, quote) => {
       if (err) {
         return res.status(404).send({ message: 'Invalid ID' }).end();

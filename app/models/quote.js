@@ -7,4 +7,4 @@ const QuoteSchema = new mongoose.Schema(
   }
 );
 
-module.exports =  mongoose.model('Quote', QuoteSchema);
+module.exports = mongoose.model('Quote', QuoteSchema);

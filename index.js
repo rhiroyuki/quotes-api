@@ -1,11 +1,10 @@
 const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const config = require('./config/config');
 const dbConnection = require('./config/database');
-const morgan = require('morgan');
-
 const routes = require('./config/routes');
+
+const app = express();
 
 app.use(morgan(':date - :method :url :status :response-time ms - :res[content-length]'));
 app.use(express.json());
@@ -19,6 +18,6 @@ const server = async () => {
   } catch (e) {
     console.error(e);
   }
-}
+};
 
 server();

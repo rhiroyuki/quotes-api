@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const QuotesController = require('../../app/controllers/quotes-controller');
+
+const router = express.Router();
 
 router.get('/:id', QuotesController.show);
 router.post('/', QuotesController.create);
