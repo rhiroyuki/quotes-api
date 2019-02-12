@@ -43,6 +43,16 @@ const QuotesController = {
         }
       });
     });
+  },
+
+  list: (req, res) => {
+    Quote.find({}, (err, quotes) => {
+      if (err) {
+        return res.status(500).send({ message: 'Internal Server Error' });
+      }
+
+      res.send({ data: quotes });
+    });
   }
 };
 
