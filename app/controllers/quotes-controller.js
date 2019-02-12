@@ -10,7 +10,7 @@ const QuotesController = {
           console.log(err);
         } else {
           console.log("Successfully created a quote");
-          res.status(201).send({ quote }).end()
+          res.status(201).send({ quote }).end();
         }
       })
     } else {
