@@ -30,7 +30,7 @@ const QuotesController = {
           author: quote.author
         }
       });
-    })
+    });
   }
 };
 
