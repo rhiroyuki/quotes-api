@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('./config')
+const config = require('./config');
 
 module.exports = (dbUri = config.dbUrl) => {
   console.log(`Connecting on database: ${config.dbUrl}`);

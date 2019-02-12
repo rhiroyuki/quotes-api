@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const quotes = require('./quotes');
+
+const router = express.Router();
 
 router.use('/quotes', quotes);
 
