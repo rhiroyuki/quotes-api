@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const QuoteSchema = new mongoose.Schema(
   {
-    message: String,
+    message: {
+      type: String,
+      required: true
+    },
     author: String
   }
 );
