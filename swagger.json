@@ -1,0 +1,152 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the documentation for the quotes-api project. You can find out more at https://github.com/rhiroyuki/quotes-api.",
+    "version": "1.0.0",
+    "title": "Quotes API"
+  },
+  "tags": [
+    {
+      "name": "quotes"
+    }
+  ],
+  "paths": {
+    "/quotes": {
+      "get": {
+        "tags": [
+          "quotes"
+        ],
+        "summary": "Fetches all the quotes from the server",
+        "description": "The server will return an array with all the quotes",
+        "operationId": "listQuotes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "quotes"
+        ],
+        "summary": "Creates a new quote",
+        "description": "You are supposed to send an object in the request body with the data for the quote",
+        "operationId": "createQuote",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object for the quote",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Quote successfully created",
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{quoteId}": {
+      "get": {
+        "tags": [
+          "quotes"
+        ],
+        "summary": "Fetches a single quote from the server",
+        "description": "The server will return an object with the selected quote",
+        "operationId": "showQuote",
+        "parameters": [
+          {
+            "name": "quoteId",
+            "in": "path",
+            "description": "The target quote",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Quote successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          },
+          "404": {
+            "description": "Invalid ID"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "quotes"
+        ],
+        "summary": "Updates an existing quote",
+        "description": "The server will return an object with the updated quote",
+        "operationId": "updateQuote",
+        "parameters": [
+          {
+            "name": "quoteId",
+            "in": "path",
+            "description": "The target quote",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The updated quote",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Quote successfully updated",
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          },
+          "404": {
+            "description": "Invalid ID"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Quote": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
