@@ -4,44 +4,44 @@ const QuotesController = {
   create: (req, res) => {
     const quote = new Quote(req.body);
 
-    if (req.body.message) {
-      quote.save((err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('Successfully created a quote');
-          res.status(201).send({ quote }).end();
-        }
-      });
-    } else {
-      console.log('Message can not be empty!');
-    }
+    quote.save((invalidQuote) => {
+      if (invalidQuote) return res.status(422).send(invalidQuote.errors);
+
+      res.status(201).send({ quote });
+    });
   },
 
   update: (req, res) => {
-      Quote.findByIdAndUpdate(req.params.id, {$set: {message: req.body.message, author: req.body.author}}, {new: true}, function(err, quote){
-        if(err){
-          console.log(err);
-          
-        }else{
-          console.log('Successfully updated a quote');
-          res.status(201).send({ quote }).end();
-        }
-      });
+    const updateStatement = { $set: { message: req.body.message, author: req.body.author } };
+    const updateOptions = { new: true, runValidators: true };
+
+    Quote.findByIdAndUpdate(req.params.id, updateStatement, updateOptions, (err, quote) => {
+      if (err) return res.status(422).send(err.errors);
+
+      res.status(200).send({ quote }).end();
+    });
   },
 
   show: (req, res) => {
     Quote.findOne({ _id: req.params.id }, (err, quote) => {
-      if (err) {
-        return res.status(404).send({ message: 'Invalid ID' }).end();
+      if (quote) {
+        return res.send({
+          data: {
+            message: quote.message,
+            author: quote.author
+          }
+        });
       }
 
-      res.send({
-        data: {
-          message: quote.message,
-          author: quote.author
-        }
-      });
+      res.status(404).send({ message: 'Quote not found' });
+    });
+  },
+
+  list: (req, res) => {
+    Quote.find({}, (err, quotes) => {
+      if (err) return res.status(500).send({ message: 'Internal Server Error' });
+
+      res.send({ data: quotes });
     });
   }
 };
