@@ -18,6 +18,18 @@ const QuotesController = {
     }
   },
 
+  update: (req, res) => {
+      Quote.findByIdAndUpdate(req.params.id, {$set: {message: req.body.message, author: req.body.author}}, {new: true}, function(err, quote){
+        if(err){
+          console.log(err);
+          
+        }else{
+          console.log('Successfully updated a quote');
+          res.status(201).send({ quote }).end();
+        }
+      });
+  },
+
   show: (req, res) => {
     Quote.findOne({ _id: req.params.id }, (err, quote) => {
       if (err) {
