@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get('/:id', QuotesController.show);
 router.post('/', QuotesController.create);
+router.post('/update/:id', QuotesController.update);
 
 module.exports = router;
