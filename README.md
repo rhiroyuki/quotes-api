@@ -1,4 +1,4 @@
-## Quotes API
+# Quotes API [![Build Status](https://travis-ci.org/rhiroyuki/quotes-api.svg?branch=master)](https://travis-ci.org/rhiroyuki/quotes-api)
 <img src="http://poraih.com.br/wp-content/uploads/2015/09/IMG_5711-940x627.jpg" width="480" alt="The Thinker">
 
 *Inspirational and motivational quotes compressed in a simple API.*
