@@ -180,6 +180,42 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "quotes"
+        ],
+        "summary": "Delete a single quote by its ID",
+        "description": "The server will return a \"no content\" status",
+        "operationId": "deleteQuote",
+        "parameters": [
+          {
+            "name": "quoteId",
+            "in": "path",
+            "description": "The target quote",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Quote successfully deleted"
+          },
+          "404": {
+            "description": "Invalid ID",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
