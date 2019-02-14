@@ -26,9 +26,14 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "object"
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Quote"
+                  }
+                }
               }
             }
           }
@@ -48,7 +53,15 @@
             "description": "Object for the quote",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Quote"
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
@@ -56,7 +69,13 @@
           "201": {
             "description": "Quote successfully created",
             "schema": {
-              "$ref": "#/definitions/Quote"
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/Quote"
+                }
+              }
             }
           }
         }
@@ -86,11 +105,25 @@
           "200": {
             "description": "Quote successfully fetched",
             "schema": {
-              "$ref": "#/definitions/Quote"
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/Quote"
+                }
+              }
             }
           },
           "404": {
-            "description": "Invalid ID"
+            "description": "Invalid ID",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -126,11 +159,25 @@
           "200": {
             "description": "Quote successfully updated",
             "schema": {
-              "$ref": "#/definitions/Quote"
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/Quote"
+                }
+              }
             }
           },
           "404": {
-            "description": "Invalid ID"
+            "description": "Invalid ID",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -140,6 +187,9 @@
     "Quote": {
       "type": "object",
       "properties": {
+        "_id": {
+          "type": "string"
+        },
         "message": {
           "type": "string"
         },
