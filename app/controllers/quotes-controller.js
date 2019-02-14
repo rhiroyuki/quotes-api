@@ -36,6 +36,14 @@ const QuotesController = {
 
       res.send({ data: quotes });
     });
+  },
+
+  delete: (req, res) => {
+    Quote.deleteOne({ _id: req.params.id }, (err) => {
+      if (err) return res.status(404).send({ message: 'Invalid ID' });
+
+      res.status(204).end();
+    });
   }
 };
 
