@@ -9,7 +9,9 @@
   "scripts": {
     "lint": "npx eslint '**/*.js'",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "setup": "./scripts/setup.sh",
+    "seed": "./scripts/seed.sh"
   },
   "repository": {
     "type": "git",

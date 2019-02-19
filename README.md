@@ -36,5 +36,6 @@ Or you can manually issue the commands below (assuming you are at the root direc
   ```
   $ cp .env.sample .env
   $ npm install
+  $ ./scripts/seed.sh
   $ npm run dev
   ```
