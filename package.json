@@ -11,7 +11,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "setup": "./scripts/setup.sh",
-    "seed": "./scripts/seed.sh"
+    "seed": "./scripts/seed.sh",
+    "test": "mocha \"test/**/*-test.js\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,18 @@
     "api",
     "nodejs"
   ],
+  "standard": {
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
+    ]
+  },
   "author": "Ricardo Eihara",
   "license": "ISC",
   "bugs": {
@@ -35,10 +48,13 @@
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "dotenv": "^6.2.0",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
   }
 }

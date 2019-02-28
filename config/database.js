@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
 const config = require('./config');
 
-module.exports = (dbUri = config.dbUrl) => {
+const connect = () => {
   console.log(`Connecting on database: ${config.dbUrl}`);
-  mongoose.connect(dbUri, { useNewUrlParser: true });
+  mongoose.connect(config.dbUrl, { useNewUrlParser: true });
   console.log('Database connected.');
 };
+
+const disconnect = () => {
+  mongoose.disconnect();
+  console.log('Database disconnected.');
+};
+
+module.exports = { connect, disconnect };
