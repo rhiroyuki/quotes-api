@@ -70,7 +70,7 @@ describe('Quotes API', () => {
 
     it('returns the quote', (done) => {
       chai.request(server).get(`/quotes/${quote.id}`).end((err, res) => {
-        expect(res.body.data.quote).to.include({ message: 'Hi', author: 'John', _id: quote.id });
+        expect(res.body.quote).to.include({ message: 'Hi', author: 'John', _id: quote.id });
         done();
       });
     });
@@ -135,14 +135,14 @@ describe('Quotes API', () => {
 
     it('returns a single quote', (done) => {
       chai.request(server).get('/quotes').end((err, res) => {
-        expect(res.body.data.length).to.eq(1);
+        expect(res.body.length).to.eq(1);
         done();
       });
     });
 
     it('returns a quote list', (done) => {
       chai.request(server).get('/quotes').end((err, res) => {
-        expect(res.body.data[0]).to.include({ message: 'Hi', author: 'John' });
+        expect(res.body[0]).to.include({ message: 'Hi', author: 'John' });
         done();
       });
     });

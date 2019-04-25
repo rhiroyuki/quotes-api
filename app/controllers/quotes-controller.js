@@ -7,7 +7,7 @@ const QuotesController = {
     quote.save((invalidQuote) => {
       if (invalidQuote) return res.status(422).send(invalidQuote.errors);
 
-      res.status(201).send({ data: { quote } });
+      res.status(201).send({ quote });
     });
   },
 
@@ -18,13 +18,13 @@ const QuotesController = {
     Quote.findByIdAndUpdate(req.params.id, updateStatement, updateOptions, (err, quote) => {
       if (err) return res.status(422).send(err.errors);
 
-      res.status(200).send({ data: { quote } });
+      res.status(200).send({ quote });
     });
   },
 
   show: (req, res) => {
     Quote.findOne({ _id: req.params.id }, (err, quote) => {
-      if (quote) return res.send({ data: { quote } });
+      if (quote) return res.send({ quote });
 
       res.status(404).send({ message: 'Quote not found' });
     });
@@ -34,7 +34,7 @@ const QuotesController = {
     Quote.find({}, (err, quotes) => {
       if (err) return res.status(500).send({ message: 'Internal Server Error' });
 
-      res.send({ data: quotes });
+      res.send(quotes);
     });
   },
 
